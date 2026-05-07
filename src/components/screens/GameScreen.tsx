@@ -100,7 +100,7 @@ export function GameScreen() {
         <div className="flex items-center justify-between mb-2 sm:mb-4">
           <button 
             onClick={() => setState(s => ({ ...s, screen: 'difficulty' }))}
-            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-2xl text-white border border-white/20 shadow-lg hover:bg-white/20 transition-all font-black uppercase text-[10px]"
+            className="w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-2xl text-white border border-white/20 shadow-lg hover:bg-white/20 transition-all font-black uppercase text-[10px]"
           >
             <ArrowLeft size={20} />
           </button>
@@ -112,7 +112,7 @@ export function GameScreen() {
             onClick={handleHint}
             disabled={isGettingHint}
             className={cn(
-              "w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white transition-all",
+              "w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white transition-all",
               isGettingHint ? "bg-gray-500 animate-spin" : "bg-yellow-400 hover:bg-yellow-300 active:scale-95"
             )}
           >
@@ -190,10 +190,11 @@ export function GameScreen() {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => toggleWord(i)}
                 className={cn(
-                  "text-4xl sm:text-7xl font-black tracking-tighter cursor-pointer transition-all duration-500 select-none px-1 py-2 sm:px-2 sm:py-4 inline-block",
+                  "font-black tracking-tighter cursor-pointer transition-all duration-500 select-none px-1 py-2 sm:px-2 sm:py-4 inline-block",
+                  "text-[clamp(1.5rem,10vw,4.5rem)]",
                   word.deleted 
-                    ? "text-red-500/30 line-through decoration-red-600 decoration-[6px] sm:decoration-[10px] opacity-20 scale-75 rotate-3 blur-[1px]" 
-                    : "text-white drop-shadow-[0_4px_0_rgba(0,0,0,0.5)] sm:drop-shadow-[0_8px_0_rgba(0,0,0,0.5)] hover:text-yellow-400"
+                    ? "text-red-500/30 line-through decoration-red-600 decoration-[max(4px,1vw)] opacity-20 scale-75 rotate-3 blur-[1px]" 
+                    : "text-white drop-shadow-[0_clamp(2px,1vw,8px)_0_rgba(0,0,0,0.5)] hover:text-yellow-400"
                 )}
               >
                 {word.text}
@@ -223,9 +224,9 @@ export function GameScreen() {
       </div>
 
       {/* Action Footer */}
-      <div className="pb-6 sm:pb-10 pt-2 sm:pt-4 relative z-10 w-full max-w-[500px] mx-auto">
-        <div className="flex justify-between items-center mb-4 sm:mb-6 px-4 sm:px-10">
-           <div className="flex gap-2 sm:gap-4">
+      <div className="pb-4 sm:pb-10 pt-1 sm:pt-4 relative z-10 w-full max-w-[500px] mx-auto">
+        <div className="flex justify-between items-center mb-3 sm:mb-6 px-4 sm:px-10">
+           <div className="flex gap-1.5 sm:gap-4">
              {Array.from({ length: levelInfo.requiredRemovals }).map((_, i) => (
                <motion.div 
                  key={i}

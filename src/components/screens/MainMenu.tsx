@@ -34,8 +34,8 @@ export function MainMenu() {
           </motion.div>
           
           <div className="relative text-center -rotate-6">
-            <span className="block text-4xl sm:text-6xl font-black italic text-yellow-400 drop-shadow-[0_4px_0_rgba(0,0,0,0.5)] leading-tight tracking-tighter">UN</span>
-            <span className="block text-4xl sm:text-6xl font-black italic text-white drop-shadow-[0_4px_0_rgba(0,0,0,0.5)] leading-tight tracking-tighter ml-2 sm:ml-4">SAY</span>
+            <span className="block text-[clamp(2.5rem,10vw,4.5rem)] font-black italic text-yellow-400 drop-shadow-[0_4px_0_rgba(0,0,0,0.5)] leading-tight tracking-tighter">UN</span>
+            <span className="block text-[clamp(2.5rem,10vw,4.5rem)] font-black italic text-white drop-shadow-[0_4px_0_rgba(0,0,0,0.5)] leading-tight tracking-tighter ml-2 sm:ml-4">SAY</span>
           </div>
           
           {/* Sparkles on logo */}

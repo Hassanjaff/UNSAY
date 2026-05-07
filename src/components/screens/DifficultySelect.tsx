@@ -35,7 +35,7 @@ export function DifficultySelect() {
       <motion.h2
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="text-5xl sm:text-7xl font-black italic text-white mb-10 sm:mb-20 text-center drop-shadow-lg leading-tight"
+        className="text-[clamp(1.5rem,8vw,4.5rem)] font-black italic text-white mb-6 sm:mb-20 text-center drop-shadow-lg leading-tight lg:-mb-10"
       >
         PICK YOUR <span className="text-yellow-400">QUEST</span>
       </motion.h2>

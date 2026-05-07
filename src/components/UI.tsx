@@ -25,8 +25,8 @@ export function DisneyButton({ onClick, children, className, variant = 'primary'
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        "rounded-full font-black uppercase tracking-widest transition-all transform",
-        size === 'lg' ? "px-12 py-5 text-2xl" : "px-8 py-3 text-lg",
+        "rounded-full font-black uppercase tracking-widest transition-all transform flex items-center justify-center min-h-[44px]",
+        size === 'lg' ? "px-6 sm:px-12 py-4 sm:py-5 text-xl sm:text-2xl" : "px-4 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-lg",
         variants[variant],
         disabled && "opacity-50 grayscale cursor-not-allowed",
         className
@@ -55,7 +55,7 @@ export function FloatingWordsBackground() {
           initial={{ opacity: 0, x: Math.random() * 100 + '%', y: '110%' }}
           animate={{ opacity: [0, 0.15, 0], y: '-10%', x: (Math.random() * 20 - 10) + '%' }}
           transition={{ duration: 25 + Math.random() * 20, repeat: Infinity, delay: i * 3 }}
-          className="absolute text-pink-200/20 text-6xl font-black italic select-none"
+          className="absolute text-pink-200/20 text-4xl sm:text-6xl font-black italic select-none"
         >
           {word}
         </motion.div>

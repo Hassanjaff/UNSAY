@@ -17,43 +17,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
 }
 
 #root {
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .game-container {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  max-width: 1920px;
-  max-height: 1080px;
+  width: 100vw;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
   background: #1A0B2E;
-  box-shadow: 0 0 100px rgba(0,0,0,1);
   display: flex;
   flex-direction: column;
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .game-container {
-    width: 100vw;
-    height: 56.25vw;
-  }
-}
-
-@media (min-aspect-ratio: 16/9) {
-  .game-container {
-    height: 100vh;
-    width: 177.78vh;
-  }
 }
 
 .artistic-bg {

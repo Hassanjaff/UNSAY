@@ -40,13 +40,13 @@ function GameContent() {
       <FloatingWordsBackground />
       
       {/* Developer Credit */}
-      <div className="absolute top-4 right-6 z-50 pointer-events-none">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-pink-300/40">
+      <div className="absolute top-2 right-4 sm:top-4 sm:right-6 z-50 pointer-events-none">
+        <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-pink-300/30">
           Developed by Hassan Raza
         </span>
       </div>
       
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center overflow-hidden">
         {state.screen === 'loading' && <LoadingScreen />}
         {state.screen === 'menu' && <MainMenu />}
         {state.screen === 'difficulty' && <DifficultySelect />}

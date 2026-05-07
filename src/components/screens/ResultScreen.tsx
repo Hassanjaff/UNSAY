@@ -91,7 +91,7 @@ export function FinalResultScreen({ type }: FinalResultScreenProps) {
       <motion.h1
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="text-4xl sm:text-6xl font-black italic text-white mb-4 sm:mb-6 uppercase tracking-tighter leading-none"
+        className="text-[clamp(2rem,12vw,4rem)] font-black italic text-white mb-4 sm:mb-6 uppercase tracking-tighter leading-none"
       >
         {type === 'win' ? 'PURE MAGIC!' : 'LIES BREAK...'}
       </motion.h1>

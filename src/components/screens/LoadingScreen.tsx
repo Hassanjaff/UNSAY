@@ -31,7 +31,7 @@ export function LoadingScreen() {
       <motion.div
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="text-7xl sm:text-9xl font-black italic mb-10 sm:mb-12 text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.5)]"
+        className="text-[clamp(4rem,20vw,12rem)] font-black italic mb-6 sm:mb-12 text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.5)]"
       >
         UNSAY
       </motion.div>
