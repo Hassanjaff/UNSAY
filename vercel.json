@@ -22,7 +22,6 @@
     },
     {
       "source": "/(.*)",
-      "status": 200,
       "destination": "/index.html"
     }
   ]
