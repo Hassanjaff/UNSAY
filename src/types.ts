@@ -18,6 +18,7 @@ export interface GameState {
     medium: number;
     hard: number;
   };
+  maxUnlockedDifficulty: Difficulty;
 }
 
 export interface ValidationResponse {

@@ -17,7 +17,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       easy: 1,
       medium: 1,
       hard: 1
-    }
+    },
+    maxUnlockedDifficulty: 'easy'
   });
 
   return (

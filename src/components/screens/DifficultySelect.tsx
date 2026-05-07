@@ -5,12 +5,22 @@ import { DisneyButton } from '../UI';
 import { DIFFICULTY_CONFIG } from '../../constants';
 import { Difficulty } from '../../types';
 import { playSound } from '../../lib/audio';
-import { Star } from 'lucide-react';
+import { Star, Lock } from 'lucide-react';
+import { cn } from '../../lib/utils';
 
 export function DifficultySelect() {
-  const { setState } = useGame();
+  const { state, setState } = useGame();
+
+  const difficulties: Difficulty[] = ['easy', 'medium', 'hard'];
+
+  const isLocked = (diff: Difficulty) => {
+    const currentIndex = difficulties.indexOf(diff);
+    const maxIndex = difficulties.indexOf(state.maxUnlockedDifficulty);
+    return currentIndex > maxIndex;
+  };
 
   const select = (diff: Difficulty) => {
+    if (isLocked(diff)) return;
     playSound('transition');
     setState(s => ({ 
       ...s, 
@@ -21,41 +31,60 @@ export function DifficultySelect() {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-12">
+    <div className="flex-1 flex flex-col items-center justify-center p-6 sm:p-12 w-full max-w-[500px] mx-auto overflow-y-auto">
       <motion.h2
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="text-7xl font-black italic text-white mb-20 text-center drop-shadow-lg"
+        className="text-5xl sm:text-7xl font-black italic text-white mb-10 sm:mb-20 text-center drop-shadow-lg leading-tight"
       >
         PICK YOUR <span className="text-yellow-400">QUEST</span>
       </motion.h2>
       
-      <div className="flex flex-row gap-8 w-full max-w-6xl justify-center">
-        {(Object.keys(DIFFICULTY_CONFIG) as Difficulty[]).map((diff, i) => (
-          <motion.div
-            key={diff}
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: i * 0.1 }}
-            className="flex-1"
-          >
-            <DisneyButton
-              onClick={() => select(diff)}
-              className="w-full h-80 relative flex flex-col items-center justify-center gap-6"
-              variant={diff === 'easy' ? 'primary' : 'secondary'}
+      <div className="flex flex-col gap-4 w-full h-full justify-center">
+        {difficulties.map((diff, i) => {
+          const locked = isLocked(diff);
+          return (
+            <motion.div
+              key={diff}
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: i * 0.1 }}
+              className="w-full"
             >
-              <div className="w-20 h-20 rounded-full bg-yellow-400 flex items-center justify-center text-blue-900 border-4 border-white shadow-2xl">
-                <Star size={40} fill="currentColor" />
-              </div>
-              <div className="text-center">
-                <span className="block text-4xl font-black italic mb-2">{DIFFICULTY_CONFIG[diff].label}</span>
-                <span className="text-sm font-black opacity-60 uppercase tracking-tighter bg-black/20 px-4 py-1.5 rounded-full">
-                  {DIFFICULTY_CONFIG[diff].levels} Chapters
-                </span>
-              </div>
-            </DisneyButton>
-          </motion.div>
-        ))}
+              <DisneyButton
+                onClick={() => select(diff)}
+                className={cn(
+                  "w-full h-32 sm:h-40 relative flex flex-row items-center justify-start gap-6 px-8",
+                  locked && "opacity-50 grayscale cursor-not-allowed"
+                )}
+                variant={diff === 'easy' ? 'primary' : 'secondary'}
+              >
+                <div className={cn(
+                  "w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-blue-900 border-2 sm:border-4 border-white shadow-xl flex-shrink-0",
+                  locked ? "bg-gray-400" : "bg-yellow-400"
+                )}>
+                  {locked ? <Lock size={24} /> : <Star size={24} fill="currentColor" />}
+                </div>
+                <div className="text-left">
+                  <span className="block text-2xl sm:text-3xl font-black italic leading-none">{DIFFICULTY_CONFIG[diff].label}</span>
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="text-[10px] font-black opacity-60 uppercase tracking-tighter bg-black/20 px-3 py-1 rounded-full whitespace-nowrap">
+                      {DIFFICULTY_CONFIG[diff].levels} Chapters
+                    </span>
+                    {locked && (
+                      <span className="text-[10px] font-black text-red-300 uppercase tracking-widest italic">LOCKED</span>
+                    )}
+                  </div>
+                </div>
+                {!locked && (
+                  <div className="ml-auto text-xs font-black opacity-40 uppercase tracking-widest">
+                    Ch. {state.unlockedLevels[diff]}
+                  </div>
+                )}
+              </DisneyButton>
+            </motion.div>
+          );
+        })}
       </div>
 
       <button 

@@ -22,7 +22,25 @@ export function FinalResultScreen({ type }: FinalResultScreenProps) {
       
       if (nextLevel > config.levels) {
         // Difficulty completed
-        setState(s => ({ ...s, screen: 'difficulty' }));
+        const difficulties: Difficulty[] = ['easy', 'medium', 'hard'];
+        const currentIndex = difficulties.indexOf(db);
+        const nextDiff = difficulties[currentIndex + 1];
+        
+        setState(s => {
+          let newMaxDiff = s.maxUnlockedDifficulty;
+          if (nextDiff) {
+            const nextDiffIndex = difficulties.indexOf(nextDiff);
+            const currentMaxIndex = difficulties.indexOf(s.maxUnlockedDifficulty);
+            if (nextDiffIndex > currentMaxIndex) {
+              newMaxDiff = nextDiff;
+            }
+          }
+          return { 
+            ...s, 
+            screen: 'difficulty',
+            maxUnlockedDifficulty: newMaxDiff
+          };
+        });
       } else {
         setState(s => ({ 
           ...s, 
@@ -46,26 +64,26 @@ export function FinalResultScreen({ type }: FinalResultScreenProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-8 text-center">
+    <div className="flex-1 flex flex-col items-center justify-center p-6 sm:p-8 text-center w-full max-w-[500px] mx-auto">
       <motion.div
         initial={{ scale: 0, rotate: -20 }}
         animate={{ scale: 1, rotate: 0 }}
-        className="mb-8"
+        className="mb-6 sm:mb-8"
       >
         {type === 'win' ? (
           <div className="relative">
-            <div className="w-32 h-32 rounded-full bg-yellow-400 flex items-center justify-center shadow-[0_0_50px_rgba(250,204,21,0.6)] border-4 border-white">
-              <Trophy size={60} className="text-blue-900" />
+            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-yellow-400 flex items-center justify-center shadow-[0_0_50px_rgba(250,204,21,0.6)] border-2 sm:border-4 border-white">
+              <Trophy size={48} sm:size={60} className="text-blue-900" />
             </div>
             <motion.div
                animate={{ opacity: [0, 1, 0], scale: [1, 2, 1] }}
                transition={{ duration: 2, repeat: Infinity }}
-               className="absolute -top-4 -right-4 text-4xl"
+               className="absolute -top-4 -right-4 text-2xl sm:text-4xl"
             >✨</motion.div>
           </div>
         ) : (
-          <div className="w-32 h-32 rounded-full bg-red-500 flex items-center justify-center shadow-[0_0_50px_rgba(239,68,68,0.4)] border-4 border-white">
-            <RotateCcw size={60} className="text-white" />
+          <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-red-500 flex items-center justify-center shadow-[0_0_50px_rgba(239,68,68,0.4)] border-2 sm:border-4 border-white">
+            <RotateCcw size={48} sm:size={60} className="text-white" />
           </div>
         )}
       </motion.div>
@@ -73,7 +91,7 @@ export function FinalResultScreen({ type }: FinalResultScreenProps) {
       <motion.h1
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="text-6xl font-black italic text-white mb-6 uppercase tracking-tighter"
+        className="text-4xl sm:text-6xl font-black italic text-white mb-4 sm:mb-6 uppercase tracking-tighter leading-none"
       >
         {type === 'win' ? 'PURE MAGIC!' : 'LIES BREAK...'}
       </motion.h1>
@@ -82,7 +100,7 @@ export function FinalResultScreen({ type }: FinalResultScreenProps) {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="text-pink-300 mb-12 text-md font-bold tracking-wide px-10 max-w-lg italic"
+        className="text-pink-300 mb-8 sm:mb-12 text-sm sm:text-md font-bold tracking-wide px-4 sm:px-10 max-w-lg italic leading-tight"
       >
         {state.feedback || (type === 'win' 
           ? `SHAPED THE TRUTH perfectly.`

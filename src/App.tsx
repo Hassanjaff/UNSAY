@@ -15,6 +15,15 @@ import { sounds, playSound } from './lib/audio';
 
 function GameContent() {
   const { state } = useGame();
+  
+  const getDiffBg = () => {
+    switch (state.difficulty) {
+      case 'easy': return 'bg-gradient-to-br from-green-950 via-emerald-900 to-green-900';
+      case 'medium': return 'bg-gradient-to-br from-orange-950 via-amber-900 to-orange-900';
+      case 'hard': return 'bg-gradient-to-br from-red-950 via-rose-900 to-red-900';
+      default: return 'bg-gradient-to-br from-blue-950 via-indigo-950 to-blue-900';
+    }
+  }
 
   useEffect(() => {
     // Start background music on first interaction
@@ -27,7 +36,7 @@ function GameContent() {
   }, []);
 
   return (
-    <div className="game-container relative flex flex-col items-center justify-center font-sans">
+    <div className={`game-container relative flex flex-col items-center justify-center font-sans transition-colors duration-1000 ${getDiffBg()}`}>
       <FloatingWordsBackground />
       
       {/* Developer Credit */}
