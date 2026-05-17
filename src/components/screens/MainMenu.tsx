@@ -21,28 +21,38 @@ export function MainMenu() {
         className="relative mb-12 sm:mb-20"
       >
         {/* Glow behind */}
-        <div className="absolute inset-0 bg-pink-500/30 blur-3xl animate-pulse" />
+        <div className="absolute inset-0 bg-pink-500/30 blur-3xl animate-pulse rounded-full" />
         
-        {/* CSS Magic Logo */}
-        <div className="w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-gradient-to-tr from-pink-600 to-purple-800 border-4 sm:border-8 border-white flex items-center justify-center shadow-[0_0_50px_rgba(236,72,153,0.5)] overflow-hidden relative">
-          <motion.div 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 opacity-20"
-          >
-             <div className="w-full h-full border-4 border-dashed border-white rounded-full scale-150" />
-          </motion.div>
-          
-          <div className="relative text-center -rotate-6">
-            <span className="block text-[clamp(2.5rem,10vw,4.5rem)] font-black italic text-yellow-400 drop-shadow-[0_4px_0_rgba(0,0,0,0.5)] leading-tight tracking-tighter">UN</span>
-            <span className="block text-[clamp(2.5rem,10vw,4.5rem)] font-black italic text-white drop-shadow-[0_4px_0_rgba(0,0,0,0.5)] leading-tight tracking-tighter ml-2 sm:ml-4">SAY</span>
-          </div>
+        {/* New Image Logo */}
+        <div className="w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center relative">
+          <motion.img 
+            src="/logo.png"
+            alt="UNSAY Logo"
+            className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(236,72,153,0.5)]"
+            initial={{ scale: 0.8, rotate: -5 }}
+            animate={{ 
+              scale: [1, 1.05, 1],
+              rotate: [0, 2, -2, 0],
+              y: [0, -10, 0]
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            whileHover={{ scale: 1.1, rotate: 5 }}
+          />
           
           {/* Sparkles on logo */}
           <motion.div
-             animate={{ opacity: [0, 1, 0], scale: [1, 2, 1] }}
-             transition={{ duration: 2, repeat: Infinity }}
-             className="absolute top-4 right-8 text-yellow-300 text-2xl"
+             animate={{ opacity: [0, 1, 0], scale: [1, 2, 1], rotate: 360 }}
+             transition={{ duration: 3, repeat: Infinity }}
+             className="absolute top-4 right-8 text-yellow-300 text-2xl pointer-events-none"
+          >✨</motion.div>
+          <motion.div
+             animate={{ opacity: [0, 1, 0], scale: [0.5, 1.5, 0.5], rotate: -360 }}
+             transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
+             className="absolute bottom-10 left-4 text-blue-300 text-xl pointer-events-none"
           >✨</motion.div>
         </div>
       </motion.div>
@@ -54,6 +64,13 @@ export function MainMenu() {
       <p className="mt-12 text-pink-300 font-black italic uppercase tracking-widest text-sm">
         "FLIP THE MEANING"
       </p>
+
+      {/* Developer Credit - Only on Main Menu */}
+      <div className="mt-8 opacity-40">
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-pink-200">
+          Developed by Hassan Raza
+        </span>
+      </div>
     </div>
   );
 }

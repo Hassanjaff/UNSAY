@@ -5,12 +5,6 @@ import { Howl } from 'howler';
 // Or I'll find some royalty free URLs
 
 export const sounds = {
-  bgm: new Howl({
-    src: ['https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'],
-    loop: true,
-    volume: 0.1,
-    html5: true
-  }),
   click: new Howl({
     src: ['https://raw.githubusercontent.com/wesbos/JavaScript30/master/01%20-%20JavaScript%20Drum%20Kit/sounds/tink.wav'],
     volume: 0.4

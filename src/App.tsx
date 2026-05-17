@@ -25,26 +25,9 @@ function GameContent() {
     }
   }
 
-  useEffect(() => {
-    // Start background music on first interaction
-    const startMusic = () => {
-      playSound('bgm');
-      window.removeEventListener('click', startMusic);
-    };
-    window.addEventListener('click', startMusic);
-    return () => window.removeEventListener('click', startMusic);
-  }, []);
-
   return (
     <div className={`game-container relative flex flex-col items-center justify-center font-sans transition-colors duration-1000 ${getDiffBg()}`}>
       <FloatingWordsBackground />
-      
-      {/* Developer Credit */}
-      <div className="absolute top-2 right-4 sm:top-4 sm:right-6 z-50 pointer-events-none">
-        <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-pink-300/30">
-          Developed by Hassan Raza
-        </span>
-      </div>
       
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center overflow-hidden">
         {state.screen === 'loading' && <LoadingScreen />}

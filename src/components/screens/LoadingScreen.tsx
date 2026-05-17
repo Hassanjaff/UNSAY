@@ -21,7 +21,6 @@ export function LoadingScreen() {
   }, []);
 
   const handleEnter = () => {
-    playSound('bgm');
     playSound('transition');
     setState(s => ({ ...s, screen: 'menu' }));
   };
@@ -29,11 +28,18 @@ export function LoadingScreen() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center text-white p-6 text-center">
       <motion.div
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="text-[clamp(4rem,20vw,12rem)] font-black italic mb-6 sm:mb-12 text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.5)]"
+        animate={{ 
+          scale: [1, 1.05, 1],
+          rotate: [0, 5, -5, 0]
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="mb-6 sm:mb-12"
       >
-        UNSAY
+        <img 
+          src="/logo.png" 
+          alt="UNSAY Logo" 
+          className="w-48 h-48 sm:w-80 sm:h-80 object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.5)]"
+        />
       </motion.div>
       
       <div className="w-full max-w-[300px] sm:max-w-md h-4 sm:h-6 bg-blue-950 rounded-full border-2 sm:border-4 border-white overflow-hidden shadow-2xl relative mb-8">

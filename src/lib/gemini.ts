@@ -12,10 +12,11 @@ export async function validateUnsay(original: string, unsayed: string): Promise<
     return await response.json();
   } catch (error) {
     console.error("AI Validation Error:", error);
+    // Be conservative in fallback: don't let broken phrases pass easily
     return {
-      isLogical: unsayed.length > 0 && unsayed !== original,
-      meaningShift: unsayed !== original ? 5 : 0,
-      feedback: "The magic is faint, but the words remain."
+      isLogical: false,
+      meaningShift: 0, 
+      feedback: "The Oracle was distracted by a linguistic anomaly. Try again."
     };
   }
 }

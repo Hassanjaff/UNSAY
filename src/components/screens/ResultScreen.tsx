@@ -5,6 +5,7 @@ import { DisneyButton } from '../UI';
 import { playSound } from '../../lib/audio';
 import { Trophy, RotateCcw, ArrowRight } from 'lucide-react';
 import { DIFFICULTY_CONFIG } from '../../constants';
+import { Difficulty } from '../../types';
 
 interface FinalResultScreenProps {
   type: 'win' | 'fail';

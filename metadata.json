@@ -2,5 +2,5 @@
   "name": "UNSAY",
   "description": "A linguistic puzzle game where you delete the fewest words to change a sentence's meaning.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

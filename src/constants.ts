@@ -9,13 +9,13 @@ export const DIFFICULTY_CONFIG = {
 export const LEVELS: Record<string, Level[]> = {
   easy: [
     { id: 1, original: "I never want to see you again", tutorial: "Welcome to UNSAY! Tap 'never' to flip the meaning, then press UNSAY.", requiredRemovals: 1 },
-    { id: 2, original: "You are definitely not alone", tutorial: "Remove 'definitely' and 'not' to reveal a darker, simpler truth. You must delete exactly 2 words.", requiredRemovals: 2 },
+    { id: 2, original: "You are definitely not alone", tutorial: "Unsay 'definitely' and 'not' to reveal a darker truth. You must delete exactly 2 words.", requiredRemovals: 2 },
     { id: 3, original: "She said she did not love him", requiredRemovals: 1 },
     { id: 4, original: "The king is dead, long live the king", requiredRemovals: 4 },
-    { id: 5, original: "It is absolutely impossible to win", requiredRemovals: 2 },
+    { id: 5, original: "I will never believe your beautiful lies", requiredRemovals: 2 },
     { id: 6, original: "I am definitely going to fail this test", requiredRemovals: 2 },
     { id: 7, original: "You should not trust anyone here", requiredRemovals: 1 },
-    { id: 8, original: "Nothing matters in the end anyway", requiredRemovals: 2 },
+    { id: 8, original: "Everything is impossible if you never try", requiredRemovals: 2 },
     { id: 9, original: "There is no way to escape the trap", requiredRemovals: 1 },
     { id: 10, original: "I will never forget what you did", requiredRemovals: 1 },
     { id: 11, original: "Nobody believes in the old legends anymore", requiredRemovals: 2 },
